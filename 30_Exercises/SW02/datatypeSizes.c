@@ -13,4 +13,7 @@ int main(int argc, char* argv[]){
 	printf("Size of Long Double is: %ld\n", sizeof(long double));
 
 	return 0;
+	
+		printf("Enter a number between (including) 0 and 9 to dislpay the number as text. Enter 10 to stop the program:\n ");
+	scanf("%d", &readValue);
 }
