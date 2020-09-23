@@ -16,9 +16,8 @@ int main(int argc, char* argv[]){
 		}else if(inputValue == 10){
 			printf("Thank you. Good bye.\n");
 		}else{
-			printf("%d as text is %s \n", inputValue, numbers[inputValue]);
+			printf("%d as text is '%s' \n", inputValue, numbers[inputValue]);
 		}
 	}
-	
 	return 0;
 }
