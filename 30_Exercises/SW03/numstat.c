@@ -4,10 +4,10 @@
 
 int main(int argc, char* argv[]){
 	float value1 = 0, value2 = 0;
-	//Making sure that we have exactly three arguments
+	//Making sure that we have exactly two arguments
 	if(argc != 3){
 		//usage message
-		printf("usage: logicOperators val1, val2\n");
+		printf("usage: logicOperators float1, float2,\n");
 	}else{ //converts input string to float
 		value1 = strtof(argv[1], NULL);
 		value2 = strtof(argv[2], NULL);
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
 		//b) Sum
 		printf("%.3f\n", value1 + value2);
 		
-		//c) Absolute Difference
+		//c) Absolute difference
 		printf("%.3f\n", fabs(value1 - value2));
 		
 		//d) Product
