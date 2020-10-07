@@ -21,16 +21,16 @@ int main(int argc, char* argv[]){
 		}
 		
 		//b) Sum
-		printf("%.3f\n", value1 + value2);
+		printf("Sum: %.3f\n", value1 + value2);
 		
 		//c) Absolute difference
-		printf("%.3f\n", fabs(value1 - value2));
+		printf("Absolute difference: %.3f\n", fabs(value1 - value2));
 		
 		//d) Product
-		printf("%.3f\n", value1 * value2);
+		printf("Product: %.3f\n", value1 * value2);
 		
 		//e) Ratio
-		printf("%.3f\n", value2 / value1);
+		printf("Ratio: %.3f\n", value2 / value1);
 	}
 	return 0;
 }
