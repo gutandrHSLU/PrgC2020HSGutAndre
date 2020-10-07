@@ -17,15 +17,15 @@ MenuItem PrintMainMenu( void );
 long ComputeCubic(long x);
 long Factorial(long n);
 void Numstat(float a, float b);
-long Nchoosek(int n_, int k_);
+long Nchoosek(long n_, long k_);
 void PrintBinary(void);
 
 //Main
 int main(int argc, char* argv[]){
 	MenuItem switchValue = MAIN_MENU;
 	int run = 1;
-	int input = 0;
-	int input2 = 0;
+	long input = 0;
+	long input2 = 0;
 	float value1 = 0; //for Numstat
 	float value2 = 0; //for Numstat
 	while(run){
@@ -44,23 +44,23 @@ int main(int argc, char* argv[]){
 				break;
 			case CUBIC:
 				printf("Enter the value you want to Cube: ");
-				scanf("%d", &input);
-				printf("%d cubed is: %ld\n\n", input, ComputeCubic(input));
+				scanf("%ld", &input);
+				printf("%ld cubed is: %ld\n\n", input, ComputeCubic(input));
 				switchValue = MAIN_MENU;
 				break;
 			case FACTORIAL:
 				printf("Enter the value you want the factorial of: ");
-				scanf("%d", &input);
-				printf("%d! is: %ld\n\n", input, Factorial(input));		
+				scanf("%ld", &input);
+				printf("%ld! is: %ld\n\n", input, Factorial(input));		
 				switchValue = MAIN_MENU;
 				break;
 			case NCHOOSEK:
 				printf("Enter two values (Type: int):\n");
 				printf("Value 1: ");
-				scanf("%d", &input);
+				scanf("%ld", &input);
 				printf("Value 2: ");
-				scanf("%d", &input2);
-				printf("%d tief %d beträgt %ld\n\n", input, input2, Nchoosek(input, input2));
+				scanf("%ld", &input2);
+				printf("%ld tief %ld beträgt %ld\n\n", input, input2, Nchoosek(input, input2));
 				switchValue = MAIN_MENU;
 				break;
 			case PRINTBINARY:
@@ -132,7 +132,7 @@ void Numstat(float a, float b){
 	printf("Ratio: %.3f\n\n", value2 / value1);
 }
 
-long Nchoosek(int n_, int k_){
+long Nchoosek(long n_, long k_){
 	long n = n_;
 	long k = k_;
 	long result = 0;
