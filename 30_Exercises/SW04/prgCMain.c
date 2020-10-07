@@ -16,8 +16,8 @@ typedef enum{
 MenuItem PrintMainMenu( void );
 long ComputeCubic(long x);
 long Factorial(long n);
-void Numstat(float a, float b);
-long Nchoosek(long n_, long k_);
+void Numstat(float value1, float value2);
+long Nchoosek(long n, long k);
 void PrintBinary(void);
 
 //Main
@@ -114,27 +114,19 @@ long Factorial(long n){
 	return result;
 }
 
-void Numstat(float a, float b){
-	float value1 = a;
-	float value2 = b;
+void Numstat(float value1, float value2){
 	if(value1 < value2){
 		printf("Values in ascending order: %.3f %.3f\n", value1, value2);
 	} else {
 		printf("Values in ascending order: %.3f %.3f\n", value2, value1);
 	}
-	//b) Sum
 	printf("Sum: %.3f\n", value1 + value2);
-	//c) Absolute difference
 	printf("Absolute difference: %.3f\n", fabs(value1 - value2));
-	//d) Product
 	printf("Product: %.3f\n", value1 * value2);
-	//e) Ratio
 	printf("Ratio: %.3f\n\n", value2 / value1);
 }
 
-long Nchoosek(long n_, long k_){
-	long n = n_;
-	long k = k_;
+long Nchoosek(long n, long k){
 	long result = 0;
 	result = (Factorial(n))/(Factorial(k)*Factorial(n-k));
 	return result;
