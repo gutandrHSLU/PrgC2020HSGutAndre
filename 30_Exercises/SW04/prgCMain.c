@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 typedef enum{
@@ -13,12 +14,13 @@ typedef enum{
 }MenuItem;
 
 //Deklarierung von Funktionen
-MenuItem PrintMainMenu( void );
+MenuItem PrintMainMenu(void);
 long ComputeCubic(long x);
 long Factorial(long n);
 void Numstat(float value1, float value2);
 long Nchoosek(long n, long k);
 void PrintBinary(void);
+void pb(unsigned int n);
 
 //Main
 int main(int argc, char* argv[]){
@@ -65,6 +67,9 @@ int main(int argc, char* argv[]){
 				break;
 			case PRINTBINARY:
 				PrintBinary();
+				//printf("Enter the value you want to see in binary form: ");
+				//scanf("%ld", &input);
+				//pb(input);
 				switchValue = MAIN_MENU;
 				break;
 			case EXIT:
@@ -134,18 +139,26 @@ long Nchoosek(long n, long k){
 
 void PrintBinary(void){
 	int n;
+	int bits[128];
+	int counter = 0;
 	printf("Enter the value you want to see in binary form: ");
 	scanf("%d", &n);
-	printf("%d in binary form is: 0b", n); 
+	printf("%d in binary form is: 0b", n);
 	while(n){
 		if(n&1)
-			printf("1");
+			bits[counter] = 1;
 		else
-			printf("0");
-		n >>=1;
+			bits[counter] = 0;
+		n>>=1;
+		counter++;
+	}
+	//printf("%d", counter);
+	for(int i = counter-1; i>=0; i--){
+		printf("%d", bits[i]);
 	}
 	printf("\n\n");
 }
+
 
 
 
