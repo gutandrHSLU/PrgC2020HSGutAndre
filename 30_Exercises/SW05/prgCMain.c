@@ -10,6 +10,7 @@ typedef enum{
 	FACTORIAL,
 	NCHOOSEK,
 	PRINTBINARY,
+	ARRAY_TEST,
 	EXIT
 }MenuItem;
 
@@ -21,6 +22,8 @@ void Numstat(float value1, float value2);
 long Nchoosek(long n, long k);
 void PrintBinary(void);
 void pb(unsigned int n);
+void ArrayTest(void);
+void PrintIntArray(int array[], int arrayLength);
 
 //Main
 int main(int argc, char* argv[]){
@@ -53,7 +56,7 @@ int main(int argc, char* argv[]){
 			case FACTORIAL:
 				printf("Enter the value you want the factorial of: ");
 				scanf("%ld", &input);
-				printf("%ld! is: %ld\n\n", input, Factorial(input));		
+				printf("%ld! is: %ld\n\n", input, Factorial(input));
 				switchValue = MAIN_MENU;
 				break;
 			case NCHOOSEK:
@@ -67,10 +70,11 @@ int main(int argc, char* argv[]){
 				break;
 			case PRINTBINARY:
 				PrintBinary();
-				//printf("Enter the value you want to see in binary form: ");
-				//scanf("%ld", &input);
-				//pb(input);
 				switchValue = MAIN_MENU;
+				break;
+			case ARRAY_TEST:
+				switchValue = MAIN_MENU;
+				ArrayTest();
 				break;
 			case EXIT:
 				printf("Good Bye!\n\n");
@@ -85,7 +89,21 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-
+#define INTARRAYLENGTH 6
+void ArrayTest(void){
+	int intArray[6] = {0};
+	PrintIntArray(intArray, INTARRAYLENGTH);
+	for (int i = 0; i<INTARRAYLENGTH; i++){
+		intArray[i] = i;
+	}
+	PrintIntArray(intArray, INTARRAYLENGTH);
+}
+void PrintIntArray(int array[], int arrayLength){
+	for(int i= 0; i < arrayLength; i++){
+		printf("%d", array[i]);
+	}
+	printf("\n");
+}
 
 
 // function implementations:
@@ -99,6 +117,7 @@ MenuItem PrintMainMenu( void ){
 	printf("%d - Factorial\n", FACTORIAL);
 	printf("%d - NCHOOSEK\n", NCHOOSEK);
 	printf("%d - PRINTBINARY\n", PRINTBINARY);
+	printf("%d - ARRAY_TEST\n", ARRAY_TEST);
 	printf("%d - Exit\n", EXIT);
 	printf("--> ");
 	scanf("%d", (int*)&selection);
@@ -158,7 +177,3 @@ void PrintBinary(void){
 	}
 	printf("\n\n");
 }
-
-
-
-
