@@ -89,22 +89,6 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-#define INTARRAYLENGTH 6
-void ArrayTest(void){
-	int intArray[6] = {0};
-	PrintIntArray(intArray, INTARRAYLENGTH);
-	for (int i = 0; i<INTARRAYLENGTH; i++){
-		intArray[i] = i;
-	}
-	PrintIntArray(intArray, INTARRAYLENGTH);
-}
-void PrintIntArray(int array[], int arrayLength){
-	for(int i= 0; i < arrayLength; i++){
-		printf("%d", array[i]);
-	}
-	printf("\n");
-}
-
 
 // function implementations:
 MenuItem PrintMainMenu( void ){
@@ -176,4 +160,20 @@ void PrintBinary(void){
 		printf("%d", bits[i]);
 	}
 	printf("\n\n");
+}
+
+#define INTARRAYLENGTH 6
+void ArrayTest(void){
+	int intArray[6] = {0};
+	PrintIntArray(intArray, INTARRAYLENGTH);
+	for (int i = 0; i<INTARRAYLENGTH; i++){
+		intArray[i] = i;
+	}
+	PrintIntArray(intArray, INTARRAYLENGTH);
+}
+void PrintIntArray(int array[], int arrayLength){
+	for(int i= 0; i < arrayLength; i++){
+		printf("%d", array[i]);
+	}
+	printf("\n");
 }
