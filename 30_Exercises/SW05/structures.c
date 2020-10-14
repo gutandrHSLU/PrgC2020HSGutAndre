@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 typedef struct {
 	int x;
 	int y;
@@ -16,7 +15,7 @@ typedef struct  {
 Rectangle myRectangles[NUM_RECTANGLES];
 
 void PrintRectangleArray(Rectangle myRectangles[], int ArrayLength);
-void PrintRectangle(Rectangle myRectangel);
+void PrintRectangle(Rectangle myRectangle);
 double ComputeRectangleArea(Rectangle myRectangle);
 
 int main(int argc, char* argv[]){
