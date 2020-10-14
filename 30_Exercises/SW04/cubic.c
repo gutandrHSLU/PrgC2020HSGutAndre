@@ -9,12 +9,7 @@ int main(int argc, char* argv[]){
 	long xCubed = 0;
 	printf("Input Value: %ld\n", input);
 	xCubed = ComputeCubic(input);
-	
 	printf("Cubic Value: %ld\n", xCubed);
-	
-
-
-
 	return 0;
 }
 
