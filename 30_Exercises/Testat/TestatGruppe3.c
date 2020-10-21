@@ -35,6 +35,6 @@ int main(int argc, char *argv[]){
 //Implementierung der Funktionen
 void PrintDataPoints(struct DataPoint array[], long numberOfPoints){
   for(int i = 0; i < numberOfPoints; i+= 1){
-    printf("%lld \t%d \t%d \t%d \n", array[i].timeStamp, array[i].pressure, array[i].systemState, array[i].alarmState);
+    printf("%d %lld \t%d \t%d \t%d \n", i, array[i].timeStamp, array[i].pressure, array[i].systemState, array[i].alarmState);
   }
 }
