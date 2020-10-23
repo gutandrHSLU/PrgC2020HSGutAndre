@@ -13,6 +13,7 @@ struct DataPoint{
 //Initialisierung der Funktionen
 void PrintDataPoints(struct DataPoint dataPoints[], int numberOfPoints);
 void PrintTime(long long timeStamp);
+void PrintTitle(int numberOfTask);
 
 //Funktion für Aufg. 1
 
@@ -22,7 +23,7 @@ void PrintTime(long long timeStamp);
 
 //Funktion für Aufg. 4
 void CalcTimeOfPressureIncrease(struct DataPoint dataPoints[], int numberOfPoints);
-int arraySum(int points[], int arrayLength);
+int ArraySum(int points[], int arrayLength);
 //Funktion für Aufg. 5
 
 
@@ -42,20 +43,24 @@ int main(int argc, char *argv[]){
   //Daten werden in das Array mit den DataPoints "abgefüllt":
   fread(myDataPoints, sizeof(struct DataPoint), numberOfPoints, fid);
 
-  //Aufgabe 1
+  //==================== Aufgabe 1 ====================
+  PrintTitle(1);
 
-  //Aufgabe 2
+  //==================== Aufgabe 2 ====================
+  PrintTitle(2);
 
-  //Aufgabe 3
+  //==================== Aufgabe 3 ====================
+  PrintTitle(3);
 
-  //Aufgabe 4
-  PrintDataPoints(myDataPoints, numberOfPoints);
+  //==================== Aufgabe 4 ====================
+  PrintTitle(4);
   CalcTimeOfPressureIncrease(myDataPoints, numberOfPoints);
 
-  //Aufgabe 5
+  //==================== Aufgabe 5 ====================
+  PrintTitle(5);
 
   //PrintDataPoints(myDataPoints, numberOfPoints);
-  //printTime(myDataPoints[0].timeStamp);
+
   //
   return 0;
 }
@@ -74,34 +79,47 @@ void PrintTime(long long timeStamp){
   return;
 }
 
+void PrintTitle(int numberOfTask){
+  int n = numberOfTask;
+  printf("\n");
+  for (int i = 0; i < 30; i++){
+    printf("=");
+  }
+  printf(" Aufgabe %d ", n);
+  for (int i = 0; i < 30; i++){
+    printf("=");
+  }
+  printf("\n");
+  return;
+}
 
-//Funktion für Aufg. 1
 
-//Funktion für Aufg. 2
+//==================== Funktion für Aufg. 1 ====================
 
-//Funktion für Aufg. 3
+//==================== Funktion für Aufg. 2 ====================
 
-//Funktion für Aufg. 4
-//Calculates the average change in Pressure over x Datapoints. The first time a threshold is met, the time is being printet
+//==================== Funktion für Aufg. 3 ====================
+
+//==================== Funktion für Aufg. 4 ====================
+//Calculates the average change in pressure over x Datapoints. The first time a threshold is met, the time is printed
 void CalcTimeOfPressureIncrease(struct DataPoint dataPoints[], int numberOfPoints){
-  int numberOfDataPoints = 20;
+  int numberOfDataPoints = 15;
   int pressurePoints[numberOfDataPoints];
-  memset(pressurePoints, 0, sizeof(pressurePoints));
-  int avgPressureDiffThreshold = 400; //[Pa]
-  for(int i = 0; i < numberOfPoints - 1; i++){
-    pressurePoints[i%5] = dataPoints[i + 1].pressure - dataPoints[i].pressure;
-    int sum = arraySum(pressurePoints, numberOfDataPoints);
-    if (sum / numberOfDataPoints > avgPressureDiffThreshold){
+  memset(pressurePoints, 0, sizeof(pressurePoints)); //Sets all elements of the array to 0
+  int avgGradientThreshold = 1500; //[Pa / 0.25s] if this thershold is met, the time is printed
+  for(int i = 0; i < numberOfPoints; i++){
+    pressurePoints[i%numberOfDataPoints] = dataPoints[i + 1].pressure - dataPoints[i].pressure; //Calculates the pressure difference and adds it to the pressurePoints array
+    int sum = ArraySum(pressurePoints, numberOfDataPoints); //Calculates the sum of the pressurePoint array
+    if (sum / numberOfDataPoints > avgGradientThreshold){
       printf("The pressure started to increase at: ");
-      printf("%lld \n", dataPoints[i-numberOfDataPoints].timeStamp);
       PrintTime(dataPoints[i-numberOfDataPoints].timeStamp);
       break;
     }
   }
   return;
 }
-
-int arraySum(int points[], int arrayLength){
+//Calculates the sum of the array
+int ArraySum(int points[], int arrayLength){
   int sum = 0;
   for (int i = 0; i < arrayLength; i++){
     sum += points[i];
@@ -109,4 +127,4 @@ int arraySum(int points[], int arrayLength){
   return sum;
 }
 
-//Funktion für Aufg. 5
+//==================== Funktion für Aufg. 5 ====================
