@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
 			case FACTORIAL:
 				printf("Enter the value you want the factorial of: ");
 				scanf("%ld", &input);
-				printf("%ld! is: %ld\n\n", input, Factorial(input));		
+				printf("%ld! is: %ld\n\n", input, Factorial(input));
 				switchValue = MAIN_MENU;
 				break;
 			case NCHOOSEK:
@@ -139,7 +139,7 @@ long Nchoosek(long n, long k){
 
 void PrintBinary(void){
 	int n;
-	int bits[128];
+	int bits[4];
 	int counter = 0;
 	printf("Enter the value you want to see in binary form: ");
 	scanf("%d", &n);
@@ -157,8 +157,5 @@ void PrintBinary(void){
 		printf("%d", bits[i]);
 	}
 	printf("\n\n");
+	return;
 }
-
-
-
-

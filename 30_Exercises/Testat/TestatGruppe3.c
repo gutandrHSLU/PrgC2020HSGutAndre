@@ -21,6 +21,9 @@ int* IntToBinaryArray(int num, int* bitsArray);
 //Funktion für Aufg. 1
 
 //Funktion für Aufg. 2
+void OldPoints(struct DataPoint array[]);
+int PrintBinary (char State);
+
 
 //Funktion für Aufg. 3
 void Print250Bar(struct DataPoint dataPoints[], int numberOfPoints);
@@ -31,6 +34,7 @@ void CalcTimeOfPressureIncrease(struct DataPoint dataPoints[], int numberOfPoint
 int ArraySum(int points[], int arrayLength);
 
 //Funktion für Aufg. 5
+void PrintSystemstateChange(struct DataPoint dataPoints[], int numberOfPoints);
 
 
 int main(int argc, char *argv[]){
@@ -52,9 +56,14 @@ int main(int argc, char *argv[]){
 
   //==================== Aufgabe 1 ====================
   PrintTitle(1);
+  printf("First timestamp: ");
+  PrintTime(myDataPoints[0].timeStamp);
+  printf("Last timestamp: ");
+  PrintTime(myDataPoints[numberOfPoints - 1].timeStamp);
 
   //==================== Aufgabe 2 ====================
   PrintTitle(2);
+  OldPoints(myDataPoints);
 
   //==================== Aufgabe 3 ====================
   PrintTitle(3);
@@ -65,23 +74,68 @@ int main(int argc, char *argv[]){
   CalcTimeOfPressureIncrease(myDataPoints, numberOfPoints);
   //==================== Aufgabe 5 ====================
   PrintTitle(5);
-
+  PrintSystemstateChange(myDataPoints, numberOfPoints);
 
   return 0;
 }
 
 //Implementierung der Funktionen
 
-
-//==============================================================
-//==================== Funktion für Aufg. 1 ====================
-//==============================================================
-
-
 //==============================================================
 //==================== Funktion für Aufg. 2 ====================
 //==============================================================
+void OldPoints(struct DataPoint array[]){
+	time_t rawtimeStart = array[0].timeStamp / 1000;
+	time_t rawtimeEnd = array[299].timeStamp / 1000;
 
+	printf("Starting time: \t\t %s", ctime(&rawtimeStart));
+	printf("End time: \t\t %s\n", ctime(&rawtimeEnd));
+	long long pressure=0;
+	char systemState=0;
+	char alarmState=1;
+
+	for(int i = 0; i < 299; i+= 1){
+		pressure += array[i].pressure;
+	}
+ 	float pressureAvg= (pressure/300)/(100000);
+
+ 	printf("Average pressure: \t %f bar\n\n", pressureAvg);
+
+ 	for(int i = 0; i < 299; i+= 1){
+ 		if (systemState!=array[i].systemState){
+ 		time_t rawtimeChange = array[i].timeStamp / 1000;
+		printf("Systemstate: \t\t %d\n", PrintBinary(array[i].systemState));
+		printf("Time of change: \t %s\n", ctime(&rawtimeChange));
+		systemState=array[i].systemState;
+		}
+	}
+
+	for(int i = 0; i < 299; i+= 1){
+ 		if (alarmState!=array[i].alarmState){
+ 		time_t rawtimeChangeAlarm = array[i].timeStamp / 1000;
+		printf("Alarmstate: \t\t %d\n", array[i].alarmState);
+		printf("Time of change: \t %s", ctime(&rawtimeChangeAlarm));
+		alarmState=array[i].alarmState;
+		}
+	 }
+ 	return;
+}
+
+int PrintBinary (char input){
+	int binary=0;
+	int rem=0;
+	int i=1;
+
+	int n=input;
+
+	while (n !=0){
+		rem=n%2;
+		n= n/2;
+		binary= binary+rem*i;
+		i=i*10;
+	}
+	return binary;
+}
 
 //==============================================================
 //==================== Funktion für Aufg. 3 ====================
@@ -145,7 +199,16 @@ int ArraySum(int points[], int arrayLength){
 //==============================================================
 //==================== Funktion für Aufg. 5 ====================
 //==============================================================
-
+void PrintSystemstateChange(struct DataPoint dataPoints[], int numberOfPoints){
+  char initialState = 0;
+  for(int i = 0; i < numberOfPoints - 1; i++){
+    if(dataPoints[i].alarmState != initialState){
+      printf("The alarmstate changed from %d to %d at: ", initialState, dataPoints[i].alarmState);
+      PrintTime(dataPoints[i].timeStamp);
+      initialState = dataPoints[i].alarmState;
+    }
+  }
+}
 
 //==============================================================
 //==================== Restliche Funktionen ====================
@@ -181,7 +244,7 @@ void WriteDataTotxt(struct DataPoint dataPoints[], int numberOfPoints, int* poin
   for(int i = 0; i < numberOfPoints-1; i++){
     time_t rawtime = dataPoints[i].timeStamp / 1000;
     int bits[4];
-    int* bitsP = IntToBinaryArray(dataPoints[i].systemState, bits);
+    int* bitsP = IntToBinaryArray(dataPoints[i].systemState, &bits);
     fprintf (pointer, "%.24s; %d; %d; %d; %d; %d; %d; \n", ctime(&rawtime), dataPoints[i].pressure, bitsP[3], bitsP[2], bitsP[1], bitsP[0], dataPoints[i].alarmState);
   }
   return;
