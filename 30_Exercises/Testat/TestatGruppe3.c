@@ -24,7 +24,6 @@ int* IntToBinaryArray(int num, int* bitsArray);
 void OldPoints(struct DataPoint array[]);
 int PrintBinary (char State);
 
-
 //Funktion für Aufg. 3
 void Print250Bar(struct DataPoint dataPoints[], int numberOfPoints);
 void PrintPressureOfExplosion(struct DataPoint dataPoints[], int numberOfPoints);
@@ -35,6 +34,7 @@ int ArraySum(int points[], int arrayLength);
 
 //Funktion für Aufg. 5
 void PrintSystemstateChange(struct DataPoint dataPoints[], int numberOfPoints);
+
 
 
 int main(int argc, char *argv[]){
@@ -60,11 +60,9 @@ int main(int argc, char *argv[]){
   PrintTime(myDataPoints[0].timeStamp);
   printf("Last timestamp: ");
   PrintTime(myDataPoints[numberOfPoints - 1].timeStamp);
-
   //==================== Aufgabe 2 ====================
   PrintTitle(2);
   OldPoints(myDataPoints);
-
   //==================== Aufgabe 3 ====================
   PrintTitle(3);
   Print250Bar(myDataPoints, numberOfPoints);
@@ -167,7 +165,6 @@ void PrintPressureOfExplosion(struct DataPoint dataPoints[], int numberOfPoints)
 //==============================================================
 //==================== Funktion für Aufg. 4 ====================
 //==============================================================
-
 //Calculates the average change in pressure over x Datapoints. The first time the avgGradient threshold is met, the time of the current dataPoint is printed
 void CalcTimeOfPressureIncrease(struct DataPoint dataPoints[], int numberOfPoints){
   int numberOfDataPoints = 15;

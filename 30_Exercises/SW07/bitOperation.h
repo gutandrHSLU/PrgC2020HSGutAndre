@@ -1,6 +1,5 @@
-#ifndef _BITOPERATION_H_
-#define _BITOPERATION_H_
-
+#ifndef BITOPERATION_H
+#define BITOPERATION_H
 
 void SetBitNInByte(unsigned char* target, unsigned char bitNumber);
 void ClearBitsNInByte(unsigned char* target, unsigned char bitNumber);
