@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-define MEINE_VORDEFINIERTE_ARRAYLAENGE 5;
+#define MEINE_VORDEFINIERTE_ARRAYLAENGE 5;
 
 void main(){
   //Arrays initialisieren:
