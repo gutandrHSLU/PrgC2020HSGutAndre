@@ -28,8 +28,8 @@ void main(){
   int a = enum1;
   printf("a = enum1 = %d\n", a); //5
 
-  printf("enum7 = %d\n", enum7);
+  printf("enum7 = %d\n", enum7); //4
 
   Fahrzeug anzRaederTesla = AUTO;
-  printf("Ein Tesla hat %d Raeder\n", anzRaederTesla);
+  printf("Ein Tesla hat %d Raeder\n", anzRaederTesla); //Ein Tesla hat 4 Raeder
 }

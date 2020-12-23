@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-#define MEINE_VORDEFINIERTE_ARRAYLAENGE 5;
+//So können vorgängig Variablen definiert werden
+//Die Länge des arrays muss jetzt nur an einer Stelle angepasst werden
+#define MEINE_VORDEFINIERTE_ARRAYLAENGE 5
 
 void main(){
   //Arrays initialisieren:

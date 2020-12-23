@@ -16,5 +16,5 @@ int main(){
   // & heisst: Adresse von...
   // * heisst: Das ist ein Pointer oder
   // * heisst: Wert wo der Pointer hin zeigt
-	return 0;
+  return 0;
 }
