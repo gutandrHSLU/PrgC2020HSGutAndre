@@ -36,6 +36,7 @@ int main(void){
       printf("Loop wurde bei i = %d gestoppt!\n", i);
       break;
     }
+  }
   //Ausgabe:
   // i currently is: 0
   // i currently is: 1
@@ -43,5 +44,14 @@ int main(void){
   // i currently is: 3
   // i currently is: 4
   // Loop wurde bei i = 5 gestoppt!
-  }
+
+  //Der "do while"-Loop wird mindestens ein mal ausgeführt!
+  i = 0;
+  do{
+    printf("Hello\n");
+    i++;
+  } while(i < 2);
+  //Ausgabe:
+  //Hello
+  //Hello
 }
